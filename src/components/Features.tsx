@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const FEATURES = [
   {
     title: "100% Offline Voice Control",
@@ -24,23 +26,31 @@ const FEATURES = [
 const Features = () => (
   <section id="features" className="relative py-16 bg-gray-50 overflow-hidden">
     {/* Ảnh nền tuyệt đẹp */}
-   <img
-  src="/assets/bg-main.png"
-  alt="Background tech"
-  className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none"
-  style={{ zIndex: 0 }}
+    <Image
+      src="/assets/bg-main.png"
+      alt="Background tech"
+      fill
+      className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none"
+      style={{ zIndex: 0 }}
+      priority
     />
-  <div
-    className="absolute inset-0 bg-blue-200/30 pointer-events-none"
-    style={{ zIndex: 1 }}
-  ></div>
+    <div
+      className="absolute inset-0 bg-blue-200/30 pointer-events-none"
+      style={{ zIndex: 1 }}
+    ></div>
     {/* Nội dung feature */}
     <div className="relative z-10 max-w-4xl mx-auto px-4">
       <h2 className="text-5xl font-bold mb-8 text-center text-blue-900">Why Choose AutoMate?</h2>
       <div className="space-y-10">
-        {FEATURES.map((f, idx) => (
+        {FEATURES.map(f => (
           <div key={f.title} className="flex flex-col md:flex-row items-center gap-8 bg-white/70 rounded-xl shadow p-6">
-            <img src={f.img} alt={f.title} className="w-48 h-48 object-contain mb-4 md:mb-0"/>
+            <Image
+              src={f.img}
+              alt={f.title}
+              width={192}
+              height={192}
+              className="w-48 h-48 object-contain mb-4 md:mb-0"
+            />
             <div>
               <h3 className="text-3xl font-semibold text-blue-800 mb-2">{f.title}</h3>
               <p className="text-gray-700">{f.desc}</p>
